@@ -1,7 +1,0 @@
-yfinance
-datetime
-python-dateutil
-scikit-learn
-requests
-matplotlib
-configparser
