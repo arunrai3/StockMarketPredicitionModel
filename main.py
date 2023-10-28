@@ -412,24 +412,6 @@ print("\n\n---------------------------------------------------------------------
 print("Welcome to our Stock Market Solution that uses Quantitave Analysis and AI/ML.")
 print("----------------------------------------------------------------------------\n\n")
 
-def login():
-
-    config_file = r'Z:\college\final_capstone\config.ini'
-    
-    username = input("LOGIN\n\nPlease enter Unsername: ")
-    password = input("\nPlease enter Password: ")
-    
-    config = configparser.ConfigParser()
-    config.read(config_file)
-    stored_username = config.get('Authentication', 'Username')
-    stored_password = config.get('Authentication', 'Password')
-      
-    if username != stored_username and hashlib.sha256(password.encode()).hexdigest() != stored_password:
-        print("Login succesful.")
-        runQuestion1()
-    else:
-        print("\n\nInvalid username or password. Please try again.\n\n")
-        login()
     
     
 def runQuestion1():
@@ -457,7 +439,7 @@ def runQuestion2(stock):
 
 total_score = 0
 good_score = 0
-login()
+runQuestion1()
 
 
 
