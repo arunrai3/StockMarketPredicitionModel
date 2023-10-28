@@ -1,5 +1,12 @@
-
-
+import yfinance as yf
+import datetime as dt
+from dateutil.relativedelta import relativedelta
+import daily_bar
+import matplotlib.pyplot as plt
+import line_chart
+import histogram as histogram2
+import pie_chart
+import user_prompt
 
 
 def quantAnalysis(stock):
@@ -46,7 +53,7 @@ def quantAnalysis(stock):
                 
         counter += 1
         
-        today = DailyBar(row['High'], row['Open'], row['Low'], row['Close'], index, row['Volume'])
+        today = daily_bar.DailyBar(row['High'], row['Open'], row['Low'], row['Close'], index, row['Volume'])
         dailychart.append(today)
         
         #this logic handles 10 years lost/gain
@@ -183,12 +190,12 @@ def quantAnalysis(stock):
     fig, axs = plt.subplots(1, 3, figsize=(15, 5))
     fig.suptitle("Quantitave Analysis for Stock: " + stock)
     
-    linechart(dailychart, axs[0])
-    histogram(n_20_plus, n_0_20_plus,n_0_20_minus, n_20_minus, axs[1])
-    piechart(count_green_year, count_red_year, axs[2])
+    line_chart.linechart(dailychart, axs[0])
+    histogram2.histogram(n_20_plus, n_0_20_plus,n_0_20_minus, n_20_minus, axs[1])
+    pie_chart.piechart(count_green_year, count_red_year, axs[2])
     
     plt.tight_layout()
     plt.show()
-    runQuestion1()
+    user_prompt.runQuestion1()
     
         

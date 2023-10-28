@@ -14,6 +14,10 @@ import hashlib
 
 
 
+
+import user_prompt
+
+
 #---------
 #main.py
 #---------
@@ -24,7 +28,7 @@ print("-------------------------------------------------------------------------
 
 total_score = 0
 good_score = 0
-runQuestion1()
+user_prompt.runQuestion1()
 
 
 

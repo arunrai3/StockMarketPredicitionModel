@@ -1,4 +1,8 @@
-
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import metrics
+import pulling_data
 
 
 def predicitionModel(training_data, date,open,close, type):
@@ -26,8 +30,8 @@ def predicitionModel(training_data, date,open,close, type):
     
     if type == "regular":
         if answer == next_day_prediction[0]:
-            good_score = good_score + 1
-        total_score = total_score + 1
+            pulling_data.good_score = pulling_data.good_score + 1
+        pulling_data.total_score = pulling_data.total_score + 1
         
     if type == "marketopen":
         print("Prediction for {:<18} {:<20} Answer: {:<20}".format(str(date) + ":", next_day_prediction[0], "Unknown, because market is still open."))

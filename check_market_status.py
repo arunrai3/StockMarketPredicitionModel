@@ -1,4 +1,5 @@
-
+import requests
+import pulling_data
 
 
 def getIfMakretOpen():

@@ -1,4 +1,10 @@
-
+import yfinance as yf
+import datetime as dt
+from datetime import datetime as datetime2
+import check_market_status
+import daily_bar
+import prediction_model
+import user_prompt
 
 
 def predicitionModelDataPull(stock):
@@ -20,7 +26,7 @@ def predicitionModelDataPull(stock):
     data = yf.download(company, training_date_obj)
     
     number_of_rows = len(data)
-    answer = getIfMakretOpen()
+    answer = check_market_status.getIfMakretOpen()
     
     for index, row in data.iterrows():
         date_str = index.date().strftime('%Y-%m-%d')
@@ -33,18 +39,18 @@ def predicitionModelDataPull(stock):
                 
         counter += 1
         
-        today = DailyBar(row['High'], row['Open'], row['Low'], row['Close'], index, row['Volume'])
+        today = daily_bar.DailyBar(row['High'], row['Open'], row['Low'], row['Close'], index, row['Volume'])
         if index > testing_date_obj:
             if counter == number_of_rows and answer == "REGULAR":
-                predicitionModel(listofdays, date_str, row['Open'], row['Close'], "marketopen")
+                prediction_model.predicitionModel(listofdays, date_str, row['Open'], row['Close'], "marketopen")
             else:            
-                predicitionModel(listofdays, date_str, row['Open'], row['Close'], "regular")
+                prediction_model.predicitionModel(listofdays, date_str, row['Open'], row['Close'], "regular")
         listofdays.append(today)
         prev_close = row['Close']
     
     if answer == "CLOSED" or answer == "POST" or answer == "error":
-        predicitionModel(listofdays, date_str, row['Open'], row['Close'], "marketclosed")
+        prediction_model.predicitionModel(listofdays, date_str, row['Open'], row['Close'], "marketclosed")
 
     print("")
     print("Accuracy percentage for Stock " + stock + " is: " + str((good_score / total_score) * 100) + "%")
-    runQuestion1()    
+    user_prompt.runQuestion1()    
