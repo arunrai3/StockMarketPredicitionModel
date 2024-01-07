@@ -16,7 +16,7 @@ The Stock Market Prediction Model is an application that offers quantitative ana
 ## Examples
 
 
-- **Statistics for AAPL:** 
+- **Quantitative Analysis using statistics for AAPL:** 
 ![Quantitative Analysis](example_images/stats.png)
 
 - **Visualizations for AAPL:** 
