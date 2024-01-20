@@ -49,7 +49,7 @@ def quantAnalysis(stock):
             perc_diff = ((row['Close'] - prev_close) / prev_close) * 100
             if perc_diff > 50:
                 print("Bad data deteced for stock " + stock + " on date " + date_str + ". Returning to main menu.")
-                runQuestion1()
+                user_prompt.runQuestion1()
                 
         counter += 1
         
